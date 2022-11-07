@@ -11,7 +11,7 @@ Digital Signature projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api u�
 * İmza Atma İşlemleri
     - Birinci Tip imza Atma (Direkt olarak dosya imzalama)
     - İkinci Tip İmza Atma (Dosyanın Hash bilgisini imzalama)
-* Cades İmza atma
+* Cades İmza Atma
     - Tümleşik imza
     - Ayrık imza
     - Seri imza
@@ -189,7 +189,7 @@ http://localhost:3638/api/pades/sign
 | signatureType           | imza tipi (Bes-Est-Esxlong-Esa)         |
 | timeStampHost           | Zaman damgası host adresi               |
 | timeStampUser           | Zaman damgası kullanıcı adı             |
-| timeStampPassword       | Zaman damgası Parola                    |
+| timeStampPassword       | Zaman damgası parola                    |
 | library                 | Akıllı kartın kütüphane bilgisi         |
 | slotId                  | Akıllı kartın slot(port) bilgisi        |
 | certificateSerialNumber | Sertifika Seri Numarı                   |
@@ -270,7 +270,7 @@ http://localhost:3638/api/pades/initializeSigning
 
 **Sign**
 
-> Başlattığımız (Initialize) ettiğimiz isteğimizi imzalıyoruz.
+> Başlattığımız (Initialize) isteğimizi imzalıyoruz.
 
 **İstek Adresi**
 
@@ -346,7 +346,7 @@ Yukarıda imza atma işlemlerinde gösterilen istekler bu yöntem için kullanı
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arata tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 ### **Ayrık İmza**
 
@@ -362,7 +362,7 @@ Seri imza atabilmek için **isCounter** parametresi **true** olarak geçilmelidi
 
 ### **Paralel İmza**
 
-İmza seviyeleri eşit olan imzalama çeşidir. Bu yöntemde ikinci bir imza atılıyor ise birince imza ise seviye olarak eşittir.
+İmza seviyeleri eşit olan imzalama çeşidir. Bu yöntemde ikinci bir imza atılıyor ise birinci imza ile seviye olarak eşittir.
 
 Seri imza atabilmek için **isCounter** parametresi **false** olarak geçilmelidir. 
 
@@ -393,7 +393,7 @@ http://localhost:3638/api/cades/verify
 **Cevap Bilgisi**
 
 ```sh
-Dosya imzalı ise True, İmzalı değil ise False olarak dönüş yapar.
+Dosya imzalı ise True, imzalı değil ise False olarak dönüş yapar.
 true / false
 ```
 
@@ -402,9 +402,9 @@ true / false
 
 ## **Pades İmza Atma**
 
-### **Tumleşik İmza**
+### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arata tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 > Pades imzalamada **Seri imza, Paralel imza ve Ayrık imza** seçenekleri yoktur.
 
@@ -433,18 +433,18 @@ http://localhost:3638/api/pades/verify
 **Cevap Bilgisi**
 
 ```sh
-Dosya imzalı ise True, İmzalı değil ise False olarak dönüş yapar.
+Dosya imzalı ise True, imzalı değil ise False olarak dönüş yapar.
 true / false
 ```
 
 > Tümleşik olarak imzalanmış dosyalarda sadece **file** bilgisi göndermek yeterli olacaktır.
-> Ayrıca Pades imza sadece Tümleşik olarak atıldığından existSignature bilgisi almamamktadır.
+> Ayrıca Pades imza sadece Tümleşik olarak atıldığından existSignature bilgisi almamaktadır.
 
 ## **Xades İmza Atma**
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arata tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 ### **Ayrık İmza**
 
@@ -499,7 +499,7 @@ true / false
 
 > Tümleşik olarak imzalanmış dosyalarda sadece **file** bilgisi göndermek yeterli olacaktır.
 > Ayrık olarak immzalanmış dosyalarda ise dosyanın kendisi ve imza bilgileri ile istek atmak gereklidir.
-> Ayrıca Xades imza için doğrualama yaparken **fileName** bilgisine ihtiyaç vardır.
+> Ayrıca Xades imza için doğrulama yaparken **fileName** bilgisine ihtiyaç vardır.
 
 ## **İmza Arşivleme**
 
@@ -537,14 +537,14 @@ http://localhost:3638/api/pades/archive
 | fileName          | İmzalı dosyanın adı           |
 
 
-> Xades arşivleme yaparken bu parametrelere ek olarak **fineName** bilgisi gönderilmelidir.
+> Xades arşivleme yaparken bu parametrelere ek olarak **fileName** bilgisi gönderilmelidir.
 
 ## **İmza Yükseltme**
 
 
 **İstek Adresi**
 
-> Hangi türdeki dosyayı yükseltmek isteniyorsak o adrese istek atılmalıdır.
+> Hangi türdeki dosyayı yükseltmek istiyorsak o adrese istek atılmalıdır.
 
 ```sh
 http://localhost:3638/api/cades/upgradeSignature
@@ -576,7 +576,7 @@ http://localhost:3638/api/pades/upgradeSignature
 | fileName          | İmzalı dosyanın adı                            |
 
 
-> Xades imza yükseltme yaparken bu parametrelere ek olarak **fineName** bilgisi gönderilmelidir.
+> Xades imza yükseltme yaparken bu parametrelere ek olarak **fileName** bilgisi gönderilmelidir.
 
 
 | Sayısal Değer | İmza Tipi |
@@ -592,7 +592,7 @@ http://localhost:3638/api/pades/upgradeSignature
 
 ## **Gelişmiş İmza Doğrualama**
 
-> Hangi türdeki dosyayı doğrulamak isteniyorsak o adrese istek atılmalıdır.
+> Hangi türdeki dosyayı doğrulamak istiyorsak o adrese istek atılmalıdır.
 
 ```sh
 http://localhost:3638/api/cades/verifyAndReturnSignatureInfos
