@@ -1,9 +1,8 @@
 # KamuSM Api 
 
-Digital Signature projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api uçlarını kullanarak **PDF(Pades)**, **XML(Xades)** ve tüm formatlar için geçerli olan **Cades** belge türleri için imzalama, imza doğrulama ve imza yükseltme işlemleri için geliştirilmiştir. Digital Signature projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerinde işlem yapabilmektedir.
-
 **Proje içerisindeki ana işlemler; **
-
+* Giriş
+* Neden Java?
 * Akıllı Kart İşlemleri 
     - Sertifika Bilgisi Okuma
         - Akıllı Kart Bilgilerini Alma
@@ -39,6 +38,31 @@ Digital Signature projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api u�
     - İmza Doğrulama Testi
     - İmzalanmış Belgenin Doğrulanması
     - İmza Upgrade Testleri
+* Olası Hatalar
+* Gelecek Geliştirmeler
+
+
+## Giriş
+Dijital Signature projesi e-imza ile gerçekleştrimek istedikleriniz işlemleri temel anlamda karşılayan bir projedir. Projeyi çıkartma nedenlerimizden birisi de ülkemizdeki e-imza kullanmına ait dokuman, uygulama ve bilgi yetersizliğini biraz da olsa giderebilmekti. Bu bağlamda geliştirdiğimiz projenin kaynak kodlarını, gerekli açıklamalarını, projenin nasıl çalıştığını, hangi imza tiplerine destek verdiğini, projenin geliştirilebilir alanlarını ve bizim gelecek geliştirmelerimizin neler olduğunu ayrıntılı şekilde bu dökümandan öğrenebilirsiniz.
+
+
+Digital Signature projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api uçlarını kullanarak **PDF(Pades)**, **XML(Xades)** ve tüm formatlar için geçerli olan **Cades** belge türleri için imzalama, imza doğrulama ve imza yükseltme işlemlerini gerçekleştirmektedir. Digital Signature projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerinde işlem yapabilmektedir.
+
+Çalışma yapısı olarak, İnternet tarayıcınızdan gönderdiğiniz komut ile Bilgisayarınızda takılı olan USB Dungle(e-imza)' dan gerekli bilgileri çekerek imza atma işlemi gerçekleştirmedir. Aşağıdaki görselde bu ayrıntılı bir biçimde gösterilmiştir.
+
+**Şekil1- 1. Tip İmza Atma**
+
+![title](images/sekil1.png)
+
+
+**Şekil2- 2. Tip İmza Atma**
+
+![title](images/sekil2.png)
+
+## Neden Java
+
+Yukarıda' da belirttiğimiz üzere Digital Signature projesi Cades, Pades ve Xades formatları desteklemektedir. Bu formatlardan Pades tip (Pdf belgeleri imzalamak için kullanılır.) altyapısında iText pdf işleme kütüphanesi kullanmaktadır.  Proje 
+bağımlılıkları için iText kütüphanesini ayrıca temin etmek gerekir. Fakat iText kütüphanesi .NET platformlarda Lisans gerektirmektedir. Bu sebeple "Tübitak' ın geliştirdiği E-imza" .NET kütüphanesi içerisinde Pades imza atma mevcut değildir.Kısaca iText kütüphanesi Java platformlarda lisans istememektedir. "Tübitak' ın geliştirdiği E-imza" Java kütüphanesinde de Pades imza mevcuttur. Bu sebeple Java projesi geliştirilmiştir.
 
 ## Akıllı Kart İşlemleri 
 
@@ -696,4 +720,23 @@ http://localhost:3638/api/cades/verifyAndReturnSignatureInfos
 | contentReference     | İçerik referansı      |
 | requiresArchival     | Arşiv bilgisi      |
 
+## Olası Hatalar
 
+Gelişmiş imza doğrulamadaki bazı parametrelerimizin KamuSM kütüphanesindeki karşılıklarını bulamadık. KamuSM ile yapmakta olduğumuz görüşmeler neticesinde bu eksik parametreleri geliştirmelerimize ekleyeceğiz.
+Örneğin, signerLocation, contentReference gibi bilgiler şuan null olarak gelmektedir.
+
+
+## Gelecek Geliştirmeler
+
+Dijital Signature projesi Bimser Çözüm şirketi tarafından geliştirilmiş ve geliştirilmeye devam edeceketir. Geliştirme hedeflerimiz arasında Mobil Imza imza desteği ve Son kullanıcının kullanabileceği arayüze sahip bir imza uygulaması yer almaktadır.
+
+### Mobil İmza Entegrasyonu
+
+Mobil imza ientegrasyonu gelecek ilk geliştirmemiz olacak ve Turkcell, Turk Telekom, Vofadone operatorlerinden imzalama işlemleri yapılabilecektir.
+
+### İmza Atma Arayüz Uygulaması
+
+Arayüz uygulamamız ise geliştiriciler haricinde son kullanıcılarada hitap edecektir. Bu arayüz uygulaması üzerinden kullanıcılar imza atma, doğrulama ve yükseltme işlemlerini bir tık ile gerçekleştirebileceklerdir.
+
+### Eksik Parametrelerin Tamamlanması
+Detaylı İmza Doğrulama kısmında bazı parametrelerin karşılıklıkları null olarak gelmektedir. Bu parametrelerin KamuSM karşılıkları sağlandığında bu parametreler doldurulacaktır.
