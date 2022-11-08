@@ -43,7 +43,7 @@
 
 
 ## Giriş
-KamuSM Api projesi e-imza ile gerçekleştirmek istediğiniz işlemleri temel anlamda karşılayan bir projedir. Projeyi oluşturma nedenlerimizden birisi de ülkemizdeki e-imza kullanımına ait döküman, uygulama ve bilgi yetersizliğini biraz da olsa giderebilmekti. Bu bağlamda geliştirdiğimiz projenin kaynak kodlarını, gerekli açıklamalarını, projenin nasıl çalıştığını, hangi imza tiplerine destek verdiğini, projenin geliştirilebilir alanlarını ve bizim gelecek geliştirmelerimizin neler olduğunu ayrıntılı şekilde bu dökümanda anlattık.
+KamuSM Api projesi e-imza ile gerçekleştirmek istediğiniz işlemleri temel anlamda karşılayan bir projedir. Projeyi oluşturma amacımız Kamu-SM tarafından yayınlanan ve imza atma işlemleri için configure edilmesi gereken ma3api projesini kullanarak hiçbir configurasyon yapmadan direk KamuSM Api projesini çalıştırarak elektronik imza süreçlerinin kullanabilir hale gelmesini sağlamaktır. Bu bağlamda geliştirdiğimiz projenin kaynak kodlarını, gerekli açıklamalarını, projenin nasıl çalıştığını, hangi imza tiplerine destek verdiğini, projenin geliştirilebilir alanlarını ve bizim gelecek geliştirmelerimizin neler olduğunu ayrıntılı şekilde bu dökümanda anlattık.
 
 
 KamuSM Api projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api uçlarını kullanarak **PDF(Pades)**, **XML(Xades)** ve tüm formatlar için geçerli olan **Cades** belge türleri için imzalama, imza doğrulama ve imza yükseltme işlemlerini gerçekleştirmektedir. KamuSM Api projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerinde işlem yapabilmektedir.
