@@ -728,15 +728,15 @@ Gelişmiş imza doğrulamadaki bazı parametrelerimizin KamuSM kütüphanesindek
 
 ## Gelecek Geliştirmeler
 
-Dijital Signature projesi Bimser Çözüm şirketi tarafından geliştirilmiş ve geliştirilmeye devam edeceketir. Geliştirme hedeflerimiz arasında Mobil Imza imza desteği ve Son kullanıcının kullanabileceği arayüze sahip bir imza uygulaması yer almaktadır.
+Geliştirme hedeflerimiz arasında Mobil imza desteği ve Son kullanıcının kullanabileceği arayüze sahip bir imza uygulaması yer almaktadır.
 
 ### Mobil İmza Entegrasyonu
 
-Mobil imza ientegrasyonu gelecek ilk geliştirmemiz olacak ve Turkcell, Turk Telekom, Vofadone operatorlerinden imzalama işlemleri yapılabilecektir.
+Mobil imza entegrasyonu gelecek ilk geliştirmemiz olacak ve Turkcell, Turk Telekom, Vofadone operatorlerinden imzalama işlemleri yapılabilecektir.
 
 ### İmza Atma Arayüz Uygulaması
 
-Arayüz uygulamamız ise geliştiriciler haricinde son kullanıcılarada hitap edecektir. Bu arayüz uygulaması üzerinden kullanıcılar imza atma, doğrulama ve yükseltme işlemlerini bir tık ile gerçekleştirebileceklerdir.
+Arayüz uygulamamız ise geliştiriciler haricinde son kullanıcılarada hitap edecektir. Bu arayüz uygulaması üzerinden kullanıcılar imza atma, doğrulama ve yükseltme işlemlerini kolayca gerçekleştirebileceklerdir.
 
 ### Eksik Parametrelerin Tamamlanması
-Detaylı İmza Doğrulama kısmında bazı parametrelerin karşılıklıkları null olarak gelmektedir. Bu parametrelerin KamuSM karşılıkları sağlandığında bu parametreler doldurulacaktır.
+Detaylı İmza Doğrulama kısmında bazı parametrelerin karşılıklıkları boş olarak dönmektedir. Bu parametrelerin KamuSM karşılıkları sağlandığında bu parametreler doldurulacaktır.
