@@ -43,12 +43,12 @@
 
 
 ## Giriş
-Dijital Signature projesi e-imza ile gerçekleştrimek istedikleriniz işlemleri temel anlamda karşılayan bir projedir. Projeyi çıkartma nedenlerimizden birisi de ülkemizdeki e-imza kullanmına ait dokuman, uygulama ve bilgi yetersizliğini biraz da olsa giderebilmekti. Bu bağlamda geliştirdiğimiz projenin kaynak kodlarını, gerekli açıklamalarını, projenin nasıl çalıştığını, hangi imza tiplerine destek verdiğini, projenin geliştirilebilir alanlarını ve bizim gelecek geliştirmelerimizin neler olduğunu ayrıntılı şekilde bu dökümandan öğrenebilirsiniz.
+KamuSM Api projesi e-imza ile gerçekleştirmek istediğiniz işlemleri temel anlamda karşılayan bir projedir. Projeyi oluşturma nedenlerimizden birisi de ülkemizdeki e-imza kullanımına ait döküman, uygulama ve bilgi yetersizliğini biraz da olsa giderebilmekti. Bu bağlamda geliştirdiğimiz projenin kaynak kodlarını, gerekli açıklamalarını, projenin nasıl çalıştığını, hangi imza tiplerine destek verdiğini, projenin geliştirilebilir alanlarını ve bizim gelecek geliştirmelerimizin neler olduğunu ayrıntılı şekilde bu dökümanda anlattık.
 
 
-Digital Signature projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api uçlarını kullanarak **PDF(Pades)**, **XML(Xades)** ve tüm formatlar için geçerli olan **Cades** belge türleri için imzalama, imza doğrulama ve imza yükseltme işlemlerini gerçekleştirmektedir. Digital Signature projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerinde işlem yapabilmektedir.
+KamuSM Api projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api uçlarını kullanarak **PDF(Pades)**, **XML(Xades)** ve tüm formatlar için geçerli olan **Cades** belge türleri için imzalama, imza doğrulama ve imza yükseltme işlemlerini gerçekleştirmektedir. KamuSM Api projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerinde işlem yapabilmektedir.
 
-Çalışma yapısı olarak, İnternet tarayıcınızdan gönderdiğiniz komut ile Bilgisayarınızda takılı olan USB Dungle(e-imza)' dan gerekli bilgileri çekerek imza atma işlemi gerçekleştirmedir. Aşağıdaki görselde bu ayrıntılı bir biçimde gösterilmiştir.
+Çalışma yapısı, internet tarayıcınızdan gönderdiğiniz komut ile bilgisayarınızda takılı olan USB Dungle(e-imza)' dan gerekli bilgileri çekerek imza atma işlemini gerçekleştirir. Aşağıdaki görselde bu ayrıntılı bir biçimde gösterilmiştir.
 
 **Şekil1- 1. Tip İmza Atma**
 
@@ -61,7 +61,7 @@ Digital Signature projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api u�
 
 ## Neden Java
 
-Yukarıda' da belirttiğimiz üzere Digital Signature projesi Cades, Pades ve Xades formatları desteklemektedir. Bu formatlardan Pades tip (Pdf belgeleri imzalamak için kullanılır.) altyapısında iText pdf işleme kütüphanesi kullanmaktadır.  Proje 
+Yukarıda' da belirttiğimiz üzere KamuSM Api projesi Cades, Pades ve Xades formatları desteklemektedir. Bu formatlardan Pades tip (Pdf belgeleri imzalamak için kullanılır.) altyapısında iText pdf işleme kütüphanesi kullanmaktadır.  Proje 
 bağımlılıkları için iText kütüphanesini ayrıca temin etmek gerekir. Fakat iText kütüphanesi .NET platformlarda Lisans gerektirmektedir. Bu sebeple "Tübitak' ın geliştirdiği E-imza" .NET kütüphanesi içerisinde Pades imza atma mevcut değildir.Kısaca iText kütüphanesi Java platformlarda lisans istememektedir. "Tübitak' ın geliştirdiği E-imza" Java kütüphanesinde de Pades imza mevcuttur. Bu sebeple Java projesi geliştirilmiştir.
 
 ## Akıllı Kart İşlemleri 
@@ -161,7 +161,7 @@ http://localhost:3638/api/smartcard/getCertificates
 
 ## İmza Atma İşlemleri
 
-İmza atmak için KamuSM - Digital Signature projesinde 2 farklı yol vardır. Bunlardan birisi direkt olarak dosya bilgisini göndererek imzalama diğeri ise imzalayacağımız dosyanın hash bilgisini oluşturarak imzalamadır.(Bu yöntem toplanda 3 farklı işlemden oluşmaktadır.)
+İmza atmak için KamuSM Api projesinde 2 farklı yol vardır. Bunlardan birisi direkt olarak dosya bilgisini göndererek imzalama diğeri ise imzalayacağımız dosyanın hash bilgisini oluşturarak imzalamadır.(Bu yöntem toplanda 3 farklı işlemden oluşmaktadır.)
 
 > Bütün türler (Cades-Xades-Pades) için iki farklı imzalama özelliğide kullanılabilir.
 
@@ -370,7 +370,7 @@ Yukarıda imza atma işlemlerinde gösterilen istekler bu yöntem için kullanı
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM Api projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 ### **Ayrık İmza**
 
@@ -428,7 +428,7 @@ true / false
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM Api projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 > Pades imzalamada **Seri imza, Paralel imza ve Ayrık imza** seçenekleri yoktur.
 
@@ -468,7 +468,7 @@ true / false
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM Api projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 ### **Ayrık İmza**
 
