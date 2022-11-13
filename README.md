@@ -3,6 +3,7 @@
 **Proje içerisindeki ana işlemler; **
 * Giriş
 * Neden Java?
+* Proje Nasıl derlenir.
 * Akıllı Kart İşlemleri 
     - Sertifika Bilgisi Okuma
         - Akıllı Kart Bilgilerini Alma
@@ -40,15 +41,21 @@
     - İmza Upgrade Testleri
 * Olası Hatalar
 * Gelecek Geliştirmeler
+* Desteklenen/Desteklenmeyen Dosya Türleri ve İmza Tipleri
+* Nasıl Katkı Sağlayabilirsiniz
+  
+
 
 
 ## Giriş
-KamuSM Api projesi e-imza ile gerçekleştirmek istediğiniz işlemleri temel anlamda karşılayan bir projedir. Projeyi oluşturma amacımız Kamu-SM tarafından yayınlanan ve imza atma işlemleri için configure edilmesi gereken ma3api projesini kullanarak hiçbir configurasyon yapmadan direk KamuSM Api projesini çalıştırarak elektronik imza süreçlerinin kullanabilir hale gelmesini sağlamaktır. Bu bağlamda geliştirdiğimiz projenin kaynak kodlarını, gerekli açıklamalarını, projenin nasıl çalıştığını, hangi imza tiplerine destek verdiğini, projenin geliştirilebilir alanlarını ve bizim gelecek geliştirmelerimizin neler olduğunu ayrıntılı şekilde bu dökümanda anlattık.
+Dijital Signature projesi e-imza ile gerçekleştrimek istedikleriniz işlemleri temel anlamda karşılayan bir projedir. Projeyi çıkartma nedenlerimizden birisi de ülkemizdeki e-imza kullanmına ait dokuman, uygulama ve bilgi yetersizliğini biraz da olsa giderebilmekti. Bu bağlamda geliştirdiğimiz projenin kaynak kodlarını, gerekli açıklamalarını, projenin nasıl çalıştığını, hangi imza tiplerine destek verdiğini, projenin geliştirilebilir alanlarını ve bizim gelecek geliştirmelerimizin neler olduğunu ayrıntılı şekilde bu dökümandan öğrenebilirsiniz.
+
+Dijital Signature projesi elektronik imza özelliği sağlayan bir projedir.Tübitak' ın geliştirdiği E-imza sisteminin Api uçlarını kullanarak **PDF(Pades)**, **XML(Xades)** ve tüm formatlar için geçerli olan **Cades** belge türleri için imzalama, imza doğrulama ve imza yükseltme işlemlerini gerçekleştirmektedir. Dijital Signature projesi sizin için kullanıma hazır bir kütüphanedir ve projeyi derlediğinizde imzalama işlemlerinizi kolaylıkla gerçekleştirebilirisiniz. Ayrıca Dijital Signature projesi geniş bir alternatif yapıya sahiptir. Projeyi entegre ettikten sonra imzalama işlemlerini sunucularınızda gerçekleştirebilir yüksek düzeyde veri güvenliği sağlayabilirsiniz.
 
 
-KamuSM Api projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api uçlarını kullanarak **PDF(Pades)**, **XML(Xades)** ve tüm formatlar için geçerli olan **Cades** belge türleri için imzalama, imza doğrulama ve imza yükseltme işlemlerini gerçekleştirmektedir. KamuSM Api projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerinde işlem yapabilmektedir.
+Digital Signature projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerinde işlem yapabilmektedir.
 
-Çalışma yapısı, internet tarayıcınızdan gönderdiğiniz komut ile bilgisayarınızda takılı olan USB Dungle(e-imza)' dan gerekli bilgileri çekerek imza atma işlemini gerçekleştirir. Aşağıdaki görselde bu ayrıntılı bir biçimde gösterilmiştir.
+Çalışma yapısı olarak, İnternet tarayıcınızdan gönderdiğiniz komut ile Bilgisayarınızda takılı olan USB Dungle(e-imza)' dan gerekli bilgileri çekerek imza atma işlemi gerçekleştirmedir. Aşağıdaki görselde bu ayrıntılı bir biçimde gösterilmiştir.
 
 **Şekil1- 1. Tip İmza Atma**
 
@@ -61,8 +68,28 @@ KamuSM Api projesi, Tübitak' ın geliştirdiği E-imza sisteminin Api uçların
 
 ## Neden Java
 
-Yukarıda' da belirttiğimiz üzere KamuSM Api projesi Cades, Pades ve Xades formatları desteklemektedir. Bu formatlardan Pades tip (Pdf belgeleri imzalamak için kullanılır.) altyapısında iText pdf işleme kütüphanesi kullanmaktadır.  Proje 
+Yukarıda' da belirttiğimiz üzere Digital Signature projesi Cades, Pades ve Xades formatları desteklemektedir. Bu formatlardan Pades tip (Pdf belgeleri imzalamak için kullanılır.) altyapısında iText pdf işleme kütüphanesi kullanmaktadır.  Proje 
 bağımlılıkları için iText kütüphanesini ayrıca temin etmek gerekir. Fakat iText kütüphanesi .NET platformlarda Lisans gerektirmektedir. Bu sebeple "Tübitak' ın geliştirdiği E-imza" .NET kütüphanesi içerisinde Pades imza atma mevcut değildir.Kısaca iText kütüphanesi Java platformlarda lisans istememektedir. "Tübitak' ın geliştirdiği E-imza" Java kütüphanesinde de Pades imza mevcuttur. Bu sebeple Java projesi geliştirilmiştir.
+
+## Proje Nasıl derlenir.
+
+Github' dan indirdiğiniz bu projeyi çalıştırmak için bilgisayarınızda Java' yı Compile edebilecek bir uygulama, jdk yüklü olması gerelidir. Proje Maven olarak geliştirilmiş ve içerisinde SpringBoot kullanılmıştır. Bu sayede ekstre işlemlere gerek kalmadan derleme işlemleri basit bir şekilde yapılabilir.
+
+
+>Dijital Signature projesi dosya yapısı aşağıdaki şekildedir.
+
+![title](images/dosyayapisi.png)
+
+>Projeyi Visual Studio Code' de açtığımız da karşımıza şu şekilde bir yapı çıkmaktadır.
+
+![title](images/projeyapisi.png)
+
+> Açılan VS code projesinde Maven altında bulunan **dscore-1.0.0** ve **restapi-1.0.0** projelerine sırası ile **clean** **install** ve **compile** yapılmalıdır.
+
+![title](images/calistirma.png)
+
+bu işlemlerden sonra projemizi Run edebilir.
+
 
 ## Akıllı Kart İşlemleri 
 
@@ -161,7 +188,7 @@ http://localhost:3638/api/smartcard/getCertificates
 
 ## İmza Atma İşlemleri
 
-İmza atmak için KamuSM Api projesinde 2 farklı yol vardır. Bunlardan birisi direkt olarak dosya bilgisini göndererek imzalama diğeri ise imzalayacağımız dosyanın hash bilgisini oluşturarak imzalamadır.(Bu yöntem toplanda 3 farklı işlemden oluşmaktadır.)
+İmza atmak için KamuSM - Digital Signature projesinde 2 farklı yol vardır. Bunlardan birisi direkt olarak dosya bilgisini göndererek imzalama diğeri ise imzalayacağımız dosyanın hash bilgisini oluşturarak imzalamadır.(Bu yöntem toplanda 3 farklı işlemden oluşmaktadır.)
 
 > Bütün türler (Cades-Xades-Pades) için iki farklı imzalama özelliğide kullanılabilir.
 
@@ -370,7 +397,7 @@ Yukarıda imza atma işlemlerinde gösterilen istekler bu yöntem için kullanı
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM Api projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 ### **Ayrık İmza**
 
@@ -428,7 +455,7 @@ true / false
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM Api projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 > Pades imzalamada **Seri imza, Paralel imza ve Ayrık imza** seçenekleri yoktur.
 
@@ -468,7 +495,7 @@ true / false
 
 ### **Tümleşik İmza**
 
-Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM Api projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
+Tümleşik imza imzalanan belge ve imza bilgisinin bir arada tutulduğu formattır. KamuSM - Digital Signature projesinde bu formatta imza atmak için imzalama isteğindeki **embeddedSignature** parametresi **true** olarak geçilmelidir.
 
 ### **Ayrık İmza**
 
@@ -689,36 +716,36 @@ http://localhost:3638/api/cades/verifyAndReturnSignatureInfos
 }
 ```
 
-| Özellik              | Açıklama |
-|----------------------|----------|
-| data                 | Sertifikanın hex formattaki bilgisi |
-| signType             | İmzalanmış dökümanın  tipi      |
-| signOwner            | İmzayan kişi Ad-Soyad      |
-| signOwnerDescription | AdSoyad, il, Ülke ve TCKN bilgisi      |
-| identifierNo         | TCKN Bilgisi      |
-| contentType          | İçerik Türü      |
-| digestAlgorithm      | digestAlgorithm türü      |
-| signatureAlgorithm   | signatureAlgorithm türü      |
-| policyOID            | Politika ID' si      |
-| signDate             | İmzalanma Tarihi      |
-| timeStamp            | Zaman Damgası Bilgisi      |
-| archiveTimeStamps    | Arşiv Zaman Damgası Bilgisi      |
-| hasTimeStamp         | Zaman Damgasına olup olmadığı bilgisi      |
-| hasArchiveTimeStamps | Arşiv zaman Damgasına olup olmadığı bilgisi        |
-| moneyLimit           | Para Limiti      |
-| qCStatements         | ...      |
-| isValid              | İmza doğruluk bilgisi   |
-| isQualified          | Sertifika Nitelikli mi      |
-| isSignatureValid     | imza doğruluk bilgisi      |
-| isCounterSignature   | Seri imza bilgisi      |
-| contentHint          | İçeril ipucu      |
-| commitmentType       | ...      |
-| contentIdentifier    | İçerik tanımlayıcı      |
-| signerLocation       | İmzacı Konumu      |
-| contentTimeStamp     | İçerik zaman damgasu      |
-| policyAddress        | Politika Adresi      |
-| contentReference     | İçerik referansı      |
-| requiresArchival     | Arşiv bilgisi      |
+| Özellik              | Açıklama                                    |
+|----------------------|---------------------------------------------|
+| data                 | Sertifikanın hex formattaki bilgisi         |
+| signType             | İmzalanmış dökümanın  tipi                  |
+| signOwner            | İmzayan kişi Ad-Soyad                       |
+| signOwnerDescription | AdSoyad, il, Ülke ve TCKN bilgisi           |
+| identifierNo         | TCKN Bilgisi                                |
+| contentType          | İçerik Türü                                 |
+| digestAlgorithm      | digestAlgorithm türü                        |
+| signatureAlgorithm   | signatureAlgorithm türü                     |
+| policyOID            | Politika ID' si                             |
+| signDate             | İmzalanma Tarihi                            |
+| timeStamp            | Zaman Damgası Bilgisi                       |
+| archiveTimeStamps    | Arşiv Zaman Damgası Bilgisi                 |
+| hasTimeStamp         | Zaman Damgasına olup olmadığı bilgisi       |
+| hasArchiveTimeStamps | Arşiv zaman Damgasına olup olmadığı bilgisi |
+| moneyLimit           | Para Limiti                                 |
+| qCStatements         | ...                                         |
+| isValid              | İmza doğruluk bilgisi                       |
+| isQualified          | Sertifika Nitelikli mi                      |
+| isSignatureValid     | imza doğruluk bilgisi                       |
+| isCounterSignature   | Seri imza bilgisi                           |
+| contentHint          | İçeril ipucu                                |
+| commitmentType       | ...                                         |
+| contentIdentifier    | İçerik tanımlayıcı                          |
+| signerLocation       | İmzacı Konumu                               |
+| contentTimeStamp     | İçerik zaman damgasu                        |
+| policyAddress        | Politika Adresi                             |
+| contentReference     | İçerik referansı                            |
+| requiresArchival     | Arşiv bilgisi                               |
 
 ## Olası Hatalar
 
@@ -728,15 +755,53 @@ Gelişmiş imza doğrulamadaki bazı parametrelerimizin KamuSM kütüphanesindek
 
 ## Gelecek Geliştirmeler
 
-Geliştirme hedeflerimiz arasında Mobil imza desteği ve Son kullanıcının kullanabileceği arayüze sahip bir imza uygulaması yer almaktadır.
+Dijital Signature projesi Bimser Çözüm şirketi tarafından geliştirilmiş ve geliştirilmeye devam edeceketir. Geliştirme hedeflerimiz arasında Mobil Imza imza desteği ve Son kullanıcının kullanabileceği arayüze sahip bir imza uygulaması yer almaktadır.
 
 ### Mobil İmza Entegrasyonu
 
-Mobil imza entegrasyonu gelecek ilk geliştirmemiz olacak ve Turkcell, Turk Telekom, Vofadone operatorlerinden imzalama işlemleri yapılabilecektir.
+Mobil imza ientegrasyonu gelecek ilk geliştirmemiz olacak ve Turkcell, Turk Telekom, Vofadone operatorlerinden imzalama işlemleri yapılabilecektir.
 
 ### İmza Atma Arayüz Uygulaması
 
-Arayüz uygulamamız ise geliştiriciler haricinde son kullanıcılarada hitap edecektir. Bu arayüz uygulaması üzerinden kullanıcılar imza atma, doğrulama ve yükseltme işlemlerini kolayca gerçekleştirebileceklerdir.
+Arayüz uygulamamız ise geliştiriciler haricinde son kullanıcılarada hitap edecektir. Bu arayüz uygulaması üzerinden kullanıcılar imza atma, doğrulama ve yükseltme işlemlerini bir tık ile gerçekleştirebileceklerdir.
 
 ### Eksik Parametrelerin Tamamlanması
-Detaylı İmza Doğrulama kısmında bazı parametrelerin karşılıklıkları boş olarak dönmektedir. Bu parametrelerin KamuSM karşılıkları sağlandığında bu parametreler doldurulacaktır.
+Detaylı İmza Doğrulama kısmında bazı parametrelerin karşılıklıkları null olarak gelmektedir. Bu parametrelerin KamuSM karşılıkları sağlandığında bu parametreler doldurulacaktır.
+
+## Desteklenen/Desteklenmeyen Dosya Türleri ve İmza Tipleri
+
+| Dosya Tipi | Dosya Formatı     | BES | EPES | EST | ESC | ESX_v1 | ESX_v2 | ESXLong | ESXLong_v1 | ESXLong_v2 | ESA | ESA_v2 |
+|------------|-------------------|-----|------|-----|-----|--------|--------|---------|------------|------------|-----|--------|
+| Pades      | pdf               | +   | +    | +   | -   | -      | -      | +       | -          | -          | +   | -      |
+| Xades      | xml               | +   | +    | +   | -   | -      | -      | +       | -          | -          | +   | -      |
+| Cades      | .*(tüm formatlar) | +   | +    | +   | -   | -      | -      | +       | -          | -          | +   | -      |
+
+Temel sevidede desteklediğimiz türler imza işlemlerini gerçekleştirmek için ilk aşamada yeterli seviyededir. Bu tabloda yer alan desteklediğimiz türlerin açıklamaları şu şekildedir.
+
+**BES**
+
+Bes imza standart bir imzadır. Dökümanda sadece imza bilgisi barındırmaktadır.Sadece dokümanın kimin tarafından imzalandığı bilinmektedir.
+
+**EST**
+
+EST' yı ise BES' den ayıran özellik imzalama işleminde, imzanın ne zaman eklendiği bilgisinide eklenmesidir. Bu ne zaman imzalandığı bilgisine zaman damgası denmektedir.
+
+**ESXLong**
+
+ESXLong imza aynı zamanda bir EST imzadır. ESXLong imza, EST imzadan farklı olarak imza içerisinde sertifika doğrulamada kullanılacak doğrulama verisini içerir.
+
+**ESA** 
+
+
+ESA tipi imza, kriptografik algoritmaların zamanla güvenilirliğini kaybetmesine karşı geliştirilmiş bir imza türüdür. Şu anda güvenerek kullandığımız algoritmalar, 5-10 yıl sonra güvenilemez duruma gelebilir. Bu algoritmalar güvenilmez duruma geçmeden önce, imzaların ESA tipine çevrilmesi gerekmektedir. Yalnız imza atıldıktan hemen sonra imzanın ESA'ya çevrilmesi fazladan bir güvenlik sağlamaz. 
+
+## Nasıl Katkı Sağlayabilirsiniz
+
+Dijital Signature projesinin farklı amaçlarından bir taneside geliştrime yapmak isteyen kullanıcılara geliştirme alt yapısı sağlamasıdır. Proje' de kullanılan tüm kodlar tüm kullanıcıların istediği gibi şekillendirip kullanması için açık kaynak kodu ile paylaşılmıştır. Bu yönden kullanıcıların geliştirme olarak ilk ihtiyaçları aşağıdaki seçeneklerden olabilir.
+  
+  - Bizim temel anlamlda desteklediğimiz imza türlerinin üzerine KamuSM API' sinin desteklediği diğer türler olan **EPES**, **ESC**, **ESX_v1**,**ESX_v2**, **ESXLong_v1** **ESXLong_v1** ve **ESA_v2** türlerinin geliştirmesi,
+  - İmza doğrulama aşamasında KamuSM API'sinden dönen tüm değerlerin kullanıcılara filtresiz olarak gösterilmesi,
+  - İmza atma işleminden sonra atılan imzanın sağlık kontrolü (imza attıktan sonra imzayı bir de doğrulama işlemi),
+
+gibi geliştirmeler yapılabilir.
+
