@@ -3,6 +3,7 @@
 **Proje içerisindeki ana işlemler; **
 * Giriş
 * Neden Java?
+* Neden OpenAPI
 * Proje Nasıl derlenir.
 * Akıllı Kart İşlemleri 
     - Sertifika Bilgisi Okuma
@@ -70,6 +71,10 @@ Digital Signature projesi şuan için **BES-EST-ESXLONG ve ESA** imza türlerind
 
 Yukarıda' da belirttiğimiz üzere Digital Signature projesi Cades, Pades ve Xades formatları desteklemektedir. Bu formatlardan Pades tip (Pdf belgeleri imzalamak için kullanılır.) altyapısında iText pdf işleme kütüphanesi kullanmaktadır.  Proje 
 bağımlılıkları için iText kütüphanesini ayrıca temin etmek gerekir. Fakat iText kütüphanesi .NET platformlarda Lisans gerektirmektedir. Bu sebeple "Tübitak' ın geliştirdiği E-imza" .NET kütüphanesi içerisinde Pades imza atma mevcut değildir.Kısaca iText kütüphanesi Java platformlarda lisans istememektedir. "Tübitak' ın geliştirdiği E-imza" Java kütüphanesinde de Pades imza mevcuttur. Bu sebeple Java projesi geliştirilmiştir.
+
+## Neden OpenAPI
+
+Open yapı sayesinde Digital Signature projesi evrensel erişime sahip oldu. Dünyanın herhangi bir yerindeki bir yazılım geliştiricisi API’ye erişerek istediği entegrasyonu gerçekleştirebilir. Böylece Digital Signature projesi entegrasonu çok daha kolay hale gelmiş oldu. Ayrıca yazılım geliştiriciler daha az kodlama yaparak Digital Signature projesinin özelliklerini kullanabilmektedirler ve yazılan kodun az olması ise programın karmaşıklık düzeyini en aza indirir.Bu da kod kaynaklı olası hataların en düşük seviyede olmasını sağlar. 
 
 ## Proje Nasıl derlenir.
 
@@ -804,4 +809,3 @@ Dijital Signature projesinin farklı amaçlarından bir taneside geliştrime yap
   - İmza atma işleminden sonra atılan imzanın sağlık kontrolü (imza attıktan sonra imzayı bir de doğrulama işlemi),
 
 gibi geliştirmeler yapılabilir.
-
